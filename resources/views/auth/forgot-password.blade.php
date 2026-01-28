@@ -1,34 +1,25 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+@extends('layouts.guest')
 
-        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+@section('content')
+    <div class="min-h-screen flex items-center justify-center">
+        <x-card class="w-full max-w-md mx-4 sm:mx-0" rounded="2xl" shadow="lg" padding="p-8">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div>
+                    <x-input icon="user" label="Email" placeholder="your email address" id="email" type="email"
+                        name="email" :value="old('email')" required autofocus />
+                </div>
 
-        @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-                {{ $value }}
-            </div>
-        @endsession
+                <div class="flex items-center justify-end mt-8">
+                    <x-button secondary class="ms-4" onclick="window.location='{{ route('login') }}'">
+                        {{ __('Cancel') }}
+                    </x-button>
 
-        <x-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
-
-            <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+                    <x-button type="submit" class="ms-4">
+                        {{ __('Reset password') }}
+                    </x-button>
+                </div>
+            </form>
+        </x-card>
+    </div>
+@endsection
