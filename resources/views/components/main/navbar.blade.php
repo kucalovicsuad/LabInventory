@@ -46,8 +46,8 @@
                 </x-button>
             </x-slot>
 
-            <x-dropdown.item label="Settings" />
-            <x-dropdown.item label="My Profile" />
+            <x-dropdown.item label="My Profile"
+                onclick="Livewire.dispatch('openModal', { user_id: {{ auth()->user()->id }} })" />
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

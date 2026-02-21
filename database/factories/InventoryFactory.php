@@ -1,0 +1,27 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Item;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Inventory>
+ */
+class InventoryFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'inventory_number' => fake()->unique()->numerify('INV-#####'),
+            'bought' => fake()->dateTimeBetween('-5 years', 'now')->format('Y-m-d'),
+            'warranty' => fake()->optional()->numberBetween(6, 36),
+            'item_id' => Item::inRandomOrder()->first()?->id ?? Item::factory(),
+        ];
+    }
+}

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Component;
 use WireUi\Traits\WireUiActions;
 
@@ -15,6 +16,9 @@ class UserManagement extends Component
     public $email;
     public $phone;
     public $role = 3;
+    public $created_at_display;
+    public $updated_at_display;
+
     public $showModal = false;
     public $listeners = ['openModal', 'confirmedDelete'];
 
@@ -29,6 +33,14 @@ class UserManagement extends Component
         $this->email = $this->user ? $this->user->email : null;;
         $this->phone = $this->user ? $this->user->phone : null;;
         $this->role = $this->user ? $this->user->role : 3;
+
+        if ($this->user) {
+            $this->created_at_display = Carbon::parse($this->user->created_at)->format('d.m.Y \a\t H:i');
+            $this->updated_at_display = Carbon::parse($this->user->updated_at)->format('d.m.Y \a\t H:i');
+        } else {
+            $this->created_at_display = null;
+            $this->updated_at_display = null;
+        }
 
         $this->showModal = true;
     }
