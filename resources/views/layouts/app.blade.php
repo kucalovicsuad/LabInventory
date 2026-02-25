@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('scripts')
 
     @wireUiScripts
 
@@ -32,6 +33,7 @@
             @yield('content')
         </main>
         @livewire('user-management')
+        @livewire('item-management')
         @livewire('confirm-modal')
     </div>
 

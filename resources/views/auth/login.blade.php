@@ -3,6 +3,19 @@
 @section('content')
     <div class="min-h-screen flex items-center justify-center">
         <x-card class="w-full max-w-md mx-4 sm:mx-0" rounded="2xl" shadow="lg" padding="p-8">
+            @if (!empty($quote['text']))
+                <div class="my-6 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                    <p class="text-sm text-slate-700 italic">
+                        “{{ $quote['text'] }}”
+                    </p>
+
+                    @if (!empty($quote['author']))
+                        <p class="mt-2 text-xs font-semibold text-slate-600">
+                            — {{ $quote['author'] }}
+                        </p>
+                    @endif
+                </div>
+            @endif
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div>

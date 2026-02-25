@@ -33,4 +33,24 @@ class Item extends Model
             $item->slug = Str::slug($item->name);
         });
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class);
+    }
+
+    public function unitRelation()
+    {
+        return $this->belongsTo(Unit::class, 'unit_id');
+    }
 }

@@ -10,20 +10,28 @@ class ConfirmModal extends Component
     public $message = '';
     public $confirmAction;
     public $confirmPayload;
+    public $confirmTarget;
 
     protected $listeners = ['openConfirmModal'];
 
-    public function openConfirmModal($message, $action, $payload = null)
+    public function openConfirmModal($message, $action, $payload = null, $target = null)
     {
         $this->message = $message;
         $this->confirmAction = $action;
         $this->confirmPayload = $payload;
+        $this->confirmTarget = $target;
         $this->show = true;
     }
 
     public function confirm()
     {
-        $this->dispatch($this->confirmAction, $this->confirmPayload);
+        if ($this->confirmTarget) {
+            $this->dispatch($this->confirmAction, $this->confirmPayload)
+                ->to($this->confirmTarget);
+        } else {
+            $this->dispatch($this->confirmAction, $this->confirmPayload);
+        }
+
         $this->show = false;
     }
 

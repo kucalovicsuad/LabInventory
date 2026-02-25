@@ -15,4 +15,9 @@ class Inventory extends Model
         'warranty',
         'item_id',
     ];
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

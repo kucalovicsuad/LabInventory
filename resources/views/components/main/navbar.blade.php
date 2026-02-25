@@ -1,5 +1,5 @@
 <header
-    class="flex items-center justify-between px-6 py-3 md:py-4 shadow-md max-w-5xl rounded-full mx-auto w-full bg-white">
+    class="flex items-center justify-between px-6 py-3 md:py-4 shadow-md max-w-5xl rounded-xl mx-auto w-full bg-white">
     <a href="https://prebuiltui.com">
         {{-- <img
             src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/prebuiltuiDummyLogo.svg" /> --}}
@@ -11,8 +11,9 @@
             href="{{ route('dashboard') }}">
             Home
         </a>
-        <a class="hover:text-indigo-600" href="#">
-            Inventory
+        <a class="hover:text-indigo-600 {{ request()->routeIs(patterns: 'items') ? 'text-indigo-600 font-bold' : '' }}"
+            href="{{ route('items') }}">
+            Items
         </a>
         <a class="hover:text-indigo-600 {{ request()->routeIs(patterns: 'users') ? 'text-indigo-600 font-bold' : '' }}"
             href="{{ route('users') }}">

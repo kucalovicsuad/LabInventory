@@ -19,7 +19,7 @@ class InventoryFactory extends Factory
     {
         return [
             'inventory_number' => fake()->unique()->numerify('INV-#####'),
-            'bought' => fake()->dateTimeBetween('-5 years', 'now')->format('Y-m-d'),
+            'bought' => fake()->dateTimeBetween('-1 years', 'now')->format('Y-m-d'),
             'warranty' => fake()->optional()->numberBetween(6, 36),
             'item_id' => Item::inRandomOrder()->first()?->id ?? Item::factory(),
         ];
