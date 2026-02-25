@@ -23,15 +23,18 @@ Sistem omogućava:
 Sistem podržava tri tipa korisnika:
 
 ### Administrator
+
 - Upravljanje korisnicima
 - Upravljanje kategorijama, lokacijama i mjernim jedinicama
 - Potpuna kontrola nad inventarom
 
 ### Laborant
+
 - Kreiranje i uređivanje stavki
 - Upravljanje inventarskim zapisima
 
 ### Read-only korisnik
+
 - Pregled podataka bez mogućnosti izmjena
 
 ---
